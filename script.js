@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         y: randomPosition(0, 35) * pixel
     };
 
+    // Игровой цикл
     function loop() {
         requestAnimationFrame(loop);
         if (++speed < 4) {
@@ -52,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         snake.tail.unshift({ x: snake.x, y: snake.y });
+
         if (snake.tail.length > snake.max_length) {
             snake.tail.pop();
         }
@@ -60,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         context.fillRect(apple.x, apple.y, pixel - 1, pixel - 1);
 
         context.fillStyle = '#04520c';
-        snake.tail.forEach(function(part, index) {
+        snake.tail.forEach((part, index) => {
             console.log(pixel - 1);
             context.fillRect(part.x, part.y, pixel - 1, pixel - 1);
 
@@ -86,5 +88,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    //requestAnimationFrame(loop);
+
+    document.addEventListener('keydown', (key) => {
+        let direction = key.code;
+
+        if (direction === 'ArrowLeft' && snake.dx === 0) {
+            snake.dx = -pixel;
+            snake.dy = 0;
+        }
+        else if (direction === 'ArrowRight' && snake.dx === 0) {
+            snake.dx = pixel;
+            snake.dy = 0;
+        }
+        else if (direction === 'ArrowUp' && snake.dy === 0) {
+            snake.dx = 0;
+            snake.dy = -pixel;
+        }
+        else if (direction === 'ArrowDown' && snake.dy === 0) {
+            snake.dx = 0;
+            snake.dy = pixel;
+        }
+    });
+
+    loop();
+
 });
