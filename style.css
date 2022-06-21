@@ -10,6 +10,14 @@ body {
     align-items: center;
 }
 
+.headings {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    font-size: 18px;
+}
+
 #game-field {
     background-color: rgb(137, 200, 136);
     border: 4px black solid;

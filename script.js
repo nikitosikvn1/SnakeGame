@@ -2,12 +2,24 @@ function randomPosition(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+if (!localStorage.getItem('record')) {
+    localStorage.setItem('record', 0);
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+
     // Объявление базовых констант
     const canvas = document.querySelector('#game-field');
     const context = canvas.getContext('2d');
     const pixel = 16;
     let speed = 0;
+    let score = 0;
+
+    let current_out = document.querySelector('#current-score');
+    let record_out = document.querySelector('#record-score');
+
+    current_out.innerHTML = `Points scored: ${score}`;
+    record_out.innerHTML = `Your record: ${localStorage.getItem('record')}`;
 
     // Создание объекта змейки
     let snake = {
@@ -73,6 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // Если координаты змейки совпали с коор. яблока, то увеличиваем макс длину и рисуем новое
             if (part.x == apple.x && part.y == apple.y) {
                 snake.max_length ++;
+                score += 10;
+                current_out.innerHTML = `Points scored: ${score}`;
                 apple.x = randomPosition(0, 35) * pixel;
                 apple.y = randomPosition(0, 35) * pixel;
             }
@@ -80,6 +94,14 @@ document.addEventListener('DOMContentLoaded', function() {
             // Если змейка врезалась в себя начинаем игру сначала
             for (let i = index + 1; i < snake.tail.length; i++) {
                 if (part.x === snake.tail[i].x && part.y === snake.tail[i].y) {
+
+                    if (score > localStorage.getItem('record')) {
+                        localStorage.setItem('record', score);
+                        record_out.innerHTML = `Your record: ${localStorage.getItem('record')}`;
+                    }
+
+                    score = 0;
+                    current_out.innerHTML = `Points scored: ${score}`;
 
                     snake.x = randomPosition(0, 35) * pixel;
                     snake.y = randomPosition(0, 35) * pixel;
