@@ -11,8 +11,6 @@ body {
 }
 
 #game-field {
-    width: 560px;
-    height: 560px;
     background-color: rgb(137, 200, 136);
     border: 2px black solid;
 }
