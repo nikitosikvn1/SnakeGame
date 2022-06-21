@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-field {
+    width: 560px;
+    height: 560px;
+    background-color: rgb(137, 200, 136);
+    border: 2px black solid;
+}
