@@ -1,2 +1,3 @@
 # SnakeGame
-Snake web game
+Snake web game by Nikita Petrykin IM-12
+You can test here: https://nikitosikvn1.github.io/SnakeGame/
