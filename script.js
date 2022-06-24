@@ -6,12 +6,13 @@ if (!localStorage.getItem('record')) {
     localStorage.setItem('record', 0);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
 
     // Объявление базовых констант
     const canvas = document.querySelector('#game-field');
     const context = canvas.getContext('2d');
     const pixel = 16;
+
     let genRange = 35;
     let speed = 0;
     let score = 0;
@@ -45,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const applyButton = document.querySelector('#confirm');
 
+    // Получаем событие нажатия на кнопку изменения настроек и применяем их
     applyButton.addEventListener('click', (e) => {
         e.preventDefault();
 
@@ -52,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
         snakeColor = document.querySelector('#snake-select').value;
         appleColor = document.querySelector('#apple-select').value;
         canvas.style.background = document.querySelector('#field-select').value;
-        console.log(size, canvas.getAttribute('width'))
 
         if (size !== Number(canvas.getAttribute('width'))) {
             canvas.setAttribute('width', size);

@@ -65,6 +65,7 @@ img {
     width: 400px;
     padding: 25px;
     transition: 0.5s all;
+    font-family: 'Anek Latin', sans-serif;
 }
 
 .popup.active {
