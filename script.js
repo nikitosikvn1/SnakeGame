@@ -139,6 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    loop();
+    //loop();
 
 });

@@ -13,12 +13,84 @@
     <script src="script.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="headings">
-            <p id="current-score">Points scored: </p>
-            <p id="record-score">Your record: </p>
-        </div>
-        <canvas width="560", height="560" id="game-field"></canvas>
+    <div class="settings">
+        <a href="#" class="open-popup"><img src="img/settings.svg" alt="settings"></a>
     </div>
+    
+    <div class="wrapper">
+        <div class="container">
+            <div class="headings">
+                <p id="current-score">Points scored: </p>
+                <p id="record-score">Your record: </p>
+            </div>
+            <canvas width="560", height="560" id="game-field"></canvas>
+        </div>
+    </div>
+   
+
+    <div class="popup_background">
+        <form class="popup">
+
+            <img src="img/close.svg" alt="" class="close-popup">
+
+            <label>
+                <select>
+                    <option value="">По умолчанию</option>
+                    <option value="">Красный</option>
+                    <option value="">Фиолетовый</option>
+                    <option value="">Желтый</option>
+                    <option value="">Синий</option>
+                    <option value="">Белый</option>
+                </select>
+                <div class="label_text">
+                    Выберете цвет змейки
+                </div>
+            </label>
+
+            <label>
+                <select>
+                    <option value="">По умолчанию</option>
+                    <option value="">Красный</option>
+                    <option value="">Фиолетовый</option>
+                    <option value="">Желтый</option>
+                    <option value="">Синий</option>
+                    <option value="">Белый</option>
+                </select>
+                <div class="label_text">
+                    Выберете цвет поля
+                </div>
+            </label>
+
+            <label>
+                <select>
+                    <option value="">По умолчанию</option>
+                    <option value="">Красный</option>
+                    <option value="">Фиолетовый</option>
+                    <option value="">Желтый</option>
+                    <option value="">Синий</option>
+                    <option value="">Белый</option>
+                </select>
+                <div class="label_text">
+                    Выберете цвет яблока
+                </div>
+            </label>
+
+            <label>
+                <select>
+                    <option value="">По умолчанию (560 × 560)</option>
+                    <option value="">400 × 400</option>
+                    <option value="">480 × 480</option>
+                    <option value="">640 × 640</option>
+                </select>
+                <div class="label_text">
+                    Размер игрового поля:
+                </div>
+            </label>
+
+            <button type="submit">Применить</button>
+        </form>
+    </div>
+
+    <script src="popup-view.js"></script>
 </body>
 </html>
