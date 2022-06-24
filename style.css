@@ -14,7 +14,7 @@
 }
 
 .wrapper {
-    min-height: 100vh;
+    min-height: 95vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,7 +29,7 @@
 }
 
 #game-field {
-    background-color: rgb(137, 200, 136);
+    background-color: #89c888;
     border: 4px black solid;
 }
 

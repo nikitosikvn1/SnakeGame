@@ -12,8 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.querySelector('#game-field');
     const context = canvas.getContext('2d');
     const pixel = 16;
+    let genRange = 35;
     let speed = 0;
     let score = 0;
+
+    let snakeColor = '#04520c';
+    let appleColor = '#d1173c';
 
     let current_out = document.querySelector('#current-score');
     let record_out = document.querySelector('#record-score');
@@ -23,8 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Создание объекта змейки
     let snake = {
-        x: randomPosition(0, 35) * pixel,
-        y: randomPosition(0, 35) * pixel,
+        x: randomPosition(0, genRange) * pixel,
+        y: randomPosition(0, genRange) * pixel,
 
         dx: pixel,
         dy: 0,
@@ -35,9 +39,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Создание объекта яблока
     let apple = {
-        x: randomPosition(0, 35) * pixel,
-        y: randomPosition(0, 35) * pixel
+        x: randomPosition(0, genRange) * pixel,
+        y: randomPosition(0, genRange) * pixel
     };
+
+    const applyButton = document.querySelector('#confirm');
+
+    applyButton.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const size = Number(document.querySelector('#field-size').value);
+        snakeColor = document.querySelector('#snake-select').value;
+        appleColor = document.querySelector('#apple-select').value;
+        canvas.style.background = document.querySelector('#field-select').value;
+        console.log(size, canvas.getAttribute('width'))
+
+        if (size !== Number(canvas.getAttribute('width'))) {
+            canvas.setAttribute('width', size);
+            canvas.setAttribute('height', size);
+
+            genRange = size / pixel;
+
+            apple.x = randomPosition(0, genRange) * pixel;
+            apple.y = randomPosition(0, genRange) * pixel;
+        }
+    });
 
     // Игровой цикл
     function loop() {
@@ -74,11 +100,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Рисуем яблоко
-        context.fillStyle = '#d1173c';
+        context.fillStyle = appleColor;
         context.fillRect(apple.x, apple.y, pixel - 1, pixel - 1);
 
         // Перебираем части змейки и отрисовываем на полотне
-        context.fillStyle = '#04520c';
+        context.fillStyle = snakeColor;
         snake.tail.forEach((part, index) => {
             context.fillRect(part.x, part.y, pixel - 1, pixel - 1);
 
@@ -87,8 +113,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 snake.max_length ++;
                 score += 10;
                 current_out.innerHTML = `Points scored: ${score}`;
-                apple.x = randomPosition(0, 35) * pixel;
-                apple.y = randomPosition(0, 35) * pixel;
+                apple.x = randomPosition(0, genRange) * pixel;
+                apple.y = randomPosition(0, genRange) * pixel;
             }
 
             // Если змейка врезалась в себя начинаем игру сначала
@@ -103,15 +129,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     score = 0;
                     current_out.innerHTML = `Points scored: ${score}`;
 
-                    snake.x = randomPosition(0, 35) * pixel;
-                    snake.y = randomPosition(0, 35) * pixel;
+                    snake.x = randomPosition(0, genRange) * pixel;
+                    snake.y = randomPosition(0, genRange) * pixel;
                     snake.tail = [];
                     snake.max_length = 4;
                     snake.dx = pixel;
                     snake.dy = 0;
 
-                    apple.x = randomPosition(0, 35) * pixel;
-                    apple.y = randomPosition(0, 35) * pixel;
+                    apple.x = randomPosition(0, genRange) * pixel;
+                    apple.y = randomPosition(0, genRange) * pixel;
                 }
             }
         });
@@ -139,6 +165,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    //loop();
+    loop();
 
 });
+
+

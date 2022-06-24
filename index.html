@@ -16,7 +16,7 @@
     <div class="settings">
         <a href="#" class="open-popup"><img src="img/settings.svg" alt="settings"></a>
     </div>
-    
+
     <div class="wrapper">
         <div class="container">
             <div class="headings">
@@ -34,13 +34,13 @@
             <img src="img/close.svg" alt="" class="close-popup">
 
             <label>
-                <select>
-                    <option value="">По умолчанию</option>
-                    <option value="">Красный</option>
-                    <option value="">Фиолетовый</option>
-                    <option value="">Желтый</option>
-                    <option value="">Синий</option>
-                    <option value="">Белый</option>
+                <select id="snake-select">
+                    <option value="#04520c">По умолчанию</option>
+                    <option value="#db1f64">Красный</option>
+                    <option value="#8c0f88">Фиолетовый</option>
+                    <option value="#918a03">Желтый</option>
+                    <option value="#0306a8">Синий</option>
+                    <option value="#ffffff">Белый</option>
                 </select>
                 <div class="label_text">
                     Выберете цвет змейки
@@ -48,13 +48,13 @@
             </label>
 
             <label>
-                <select>
-                    <option value="">По умолчанию</option>
-                    <option value="">Красный</option>
-                    <option value="">Фиолетовый</option>
-                    <option value="">Желтый</option>
-                    <option value="">Синий</option>
-                    <option value="">Белый</option>
+                <select id="field-select">
+                    <option value="#89c888">По умолчанию</option>
+                    <option value="#19c2e0">Голубой</option>
+                    <option value="#e683b3">Розовый</option>
+                    <option value="#d0d180">Желтый</option>
+                    <option value="#000000">Черный</option>
+                    <option value="#cf7de3">Сиреневый</option>
                 </select>
                 <div class="label_text">
                     Выберете цвет поля
@@ -62,13 +62,11 @@
             </label>
 
             <label>
-                <select>
-                    <option value="">По умолчанию</option>
-                    <option value="">Красный</option>
-                    <option value="">Фиолетовый</option>
-                    <option value="">Желтый</option>
-                    <option value="">Синий</option>
-                    <option value="">Белый</option>
+                <select id="apple-select">
+                    <option value="#d1173c">По умолчанию</option>
+                    <option value="#eff556">Желтый</option>
+                    <option value="#38c930">Зеленый</option>
+                    <option value="#4247c9">Синий</option>
                 </select>
                 <div class="label_text">
                     Выберете цвет яблока
@@ -76,18 +74,18 @@
             </label>
 
             <label>
-                <select>
-                    <option value="">По умолчанию (560 × 560)</option>
-                    <option value="">400 × 400</option>
-                    <option value="">480 × 480</option>
-                    <option value="">640 × 640</option>
+                <select id="field-size">
+                    <option value="560">По умолчанию (560 × 560)</option>
+                    <option value="400">400 × 400</option>
+                    <option value="480">480 × 480</option>
+                    <option value="640">640 × 640</option>
                 </select>
                 <div class="label_text">
                     Размер игрового поля:
                 </div>
             </label>
 
-            <button type="submit">Применить</button>
+            <button type="submit" id="confirm">Применить</button>
         </form>
     </div>
 
