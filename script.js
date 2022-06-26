@@ -7,7 +7,6 @@ if (!localStorage.getItem('record')) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-
     // Объявление базовых констант
     const canvas = document.querySelector('#game-field');
     const context = canvas.getContext('2d');
@@ -20,14 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let snakeColor = '#04520c';
     let appleColor = '#d1173c';
 
-    let current_out = document.querySelector('#current-score');
-    let record_out = document.querySelector('#record-score');
+    const current_out = document.querySelector('#current-score');
+    const record_out = document.querySelector('#record-score');
 
     current_out.innerHTML = `Points scored: ${score}`;
     record_out.innerHTML = `Your record: ${localStorage.getItem('record')}`;
 
     // Создание объекта змейки
-    let snake = {
+    const snake = {
         x: randomPosition(0, genRange) * pixel,
         y: randomPosition(0, genRange) * pixel,
 
@@ -39,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Создание объекта яблока
-    let apple = {
+    const apple = {
         x: randomPosition(0, genRange) * pixel,
         y: randomPosition(0, genRange) * pixel
     };
@@ -121,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Если змейка врезалась в себя начинаем игру сначала
             for (let i = index + 1; i < snake.tail.length; i++) {
                 if (part.x === snake.tail[i].x && part.y === snake.tail[i].y) {
-
                     if (score > localStorage.getItem('record')) {
                         localStorage.setItem('record', score);
                         record_out.innerHTML = `Your record: ${localStorage.getItem('record')}`;
@@ -151,23 +149,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (direction === 'ArrowLeft' && snake.dx === 0) {
             snake.dx = -pixel;
             snake.dy = 0;
-        }
-        else if (direction === 'ArrowRight' && snake.dx === 0) {
+        } else if (direction === 'ArrowRight' && snake.dx === 0) {
             snake.dx = pixel;
             snake.dy = 0;
-        }
-        else if (direction === 'ArrowUp' && snake.dy === 0) {
+        } else if (direction === 'ArrowUp' && snake.dy === 0) {
             snake.dx = 0;
             snake.dy = -pixel;
-        }
-        else if (direction === 'ArrowDown' && snake.dy === 0) {
+        } else if (direction === 'ArrowDown' && snake.dy === 0) {
             snake.dx = 0;
             snake.dy = pixel;
         }
     });
 
     loop();
-
 });
 
 
